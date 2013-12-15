@@ -43,16 +43,9 @@
     if (!statusBarBackgroundView) {
         
         CGRect barRect = CGRectMake(0.0f, 0.0f, 320.0f, 28.0f);
-        UIImage *backgroundImage = [(UIImageView *)[collectionView backgroundView] image];
-        barRect.size.width *= backgroundImage.scale;
-        barRect.size.height *= backgroundImage.scale;
-        CGImageRef imageRef = CGImageCreateWithImageInRect([backgroundImage CGImage], barRect);
-        UIImage *topImage = [UIImage imageWithCGImage:imageRef
-                                                scale:backgroundImage.scale
-                                          orientation:UIImageOrientationUp];
-        CGImageRelease(imageRef);
-
-        statusBarBackgroundView = [[UIImageView alloc] initWithImage:topImage];
+        
+        statusBarBackgroundView = [[collectionView backgroundView] resizableSnapshotViewFromRect:barRect afterScreenUpdates:YES withCapInsets:UIEdgeInsetsZero];
+        
         CAGradientLayer *gradientLayer = [CAGradientLayer layer];
         NSArray *colors = [NSArray arrayWithObjects:
                            (id)[[UIColor colorWithWhite:0 alpha:0] CGColor],

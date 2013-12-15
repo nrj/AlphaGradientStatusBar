@@ -10,7 +10,7 @@
 
 @interface ViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (nonatomic, readonly) UIImageView *statusBarBackgroundView;
+@property (nonatomic, readonly) UIView *statusBarBackgroundView;
 @property (nonatomic, readonly) UICollectionView *collectionView;
 
 @end
